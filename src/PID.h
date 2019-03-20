@@ -30,14 +30,23 @@ class PID {
    * @output The total PID error
    */
   double TotalError();
+  
+  double UpdateOutput();
 
- private:
+  
+  //ALSO public for simplicity
+  
+  int counter;
+  int twiddle_counter;
   /**
    * PID Errors
    */
   double p_error;
   double i_error;
   double d_error;
+  double acumulated_error;
+  double best_acumulated_error;
+
 
   /**
    * PID Coefficients
@@ -45,6 +54,18 @@ class PID {
   double Kp;
   double Ki;
   double Kd;
+  //___________
+  double best_Kp;
+  double best_Ki;
+  double best_Kd;
+  double dKp;
+  double dKi;
+  double dKd;
+  
+  //Output
+  
+  double output;
+
 };
 
 #endif  // PID_H
